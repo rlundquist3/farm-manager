@@ -34,6 +34,7 @@ App.propTypes = {
 };
 
 export default createContainer(() => {
+  Meteor.subscribe('climateData');
   return {
     climateData: ClimateData.find({}, {sort: { createdAt: -1 } }).fetch(),
     currentUser: Meteor.user(),
