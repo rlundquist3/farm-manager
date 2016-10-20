@@ -1,20 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
-import { Data } from '../api/data.js'
-import Data from './Data.jsx';
+import { ClimateData } from '../api/climateData.js'
+import Climate from './Climate.jsx';
 
 class App extends Component {
-  getData() {
-    return [
-      { _id: 1, temp: '80', humidity: '.70' },
-      { _id: 2, temp: '81', humidity: '.72' },
-      { _id: 3, temp: '80', humidity: '.71' },
-    ];
-  }
 
-  renderData() {
-    return this.props.data.map((data) => (
-      <Data key={data._id} data={data} />
+  renderClimate() {
+    return this.props.climateData.map((climate) => (
+      <Climate key={climate._id} climate={climate} />
     ));
   }
 
@@ -22,11 +15,11 @@ class App extends Component {
     return (
       <div className="container">
         <header>
-          <h1>Data</h1>
+          <h1>Climate</h1>
         </header>
 
         <ul>
-          {this.renderData()}
+          {this.renderClimate()}
         </ul>
       </div>
     );
@@ -34,11 +27,11 @@ class App extends Component {
 }
 
 App.propTypes = {
-  data: PropTypes.array.isRequired,
+  climateData: PropTypes.array.isRequired,
 };
 
 export default createContainer(() => {
   return {
-    data: Data.find({}).fetch(),
+    climateData: ClimateData.find({}).fetch(),
   };
 }, App);
