@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-
+import React, { Component, PropTypes } from 'react';
+import { createContainer } from 'meteor/react-meteor-data';
+import { Data } from '../api/data.js'
 import Data from './Data.jsx';
 
-export default class App extends Component {
+class App extends Component {
   getData() {
     return [
       { _id: 1, temp: '80', humidity: '.70' },
@@ -12,7 +13,7 @@ export default class App extends Component {
   }
 
   renderData() {
-    return this.getData().map((data) => (
+    return this.props.data.map((data) => (
       <Data key={data._id} data={data} />
     ));
   }
@@ -31,3 +32,13 @@ export default class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  data: PropTypes.array.isRequired,
+};
+
+export default createContainer(() => {
+  return {
+    data: Data.find({}).fetch(),
+  };
+}, App);
