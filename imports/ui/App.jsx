@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { ClimateData } from '../api/climateData.js'
 import Climate from './Climate.jsx';
+import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
 class App extends Component {
 
@@ -16,6 +17,7 @@ class App extends Component {
       <div className="container">
         <header>
           <h1>Climate</h1>
+          <AccountsUIWrapper />
         </header>
 
         <ul>
@@ -28,10 +30,12 @@ class App extends Component {
 
 App.propTypes = {
   climateData: PropTypes.array.isRequired,
+  currentUser: PropTypes.object,
 };
 
 export default createContainer(() => {
   return {
-    climateData: ClimateData.find({}).fetch(),
+    climateData: ClimateData.find({}, {sort: { createdAt: -1 } }).fetch(),
+    currentUser: Meteor.user(),
   };
 }, App);
