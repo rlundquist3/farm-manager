@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
-import { ClimateData } from '../api/climateData.js'
+import { ClimateData } from '../api/climateData.js';
 import Climate from './Climate.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
