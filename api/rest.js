@@ -7,22 +7,6 @@ if (Meteor.isServer) {
 
   });
 
-  // Api.addRoute('climate_data/:id', {authRequired: false}, {
-  //   post: {
-  //     action: function() {
-  //       var data = this.bodyParams;
-  //       console.log(JSON.stringify(data.temp));
-  //       // ClimateData.insert({
-  //       //   temp: this.bodyParams.temp,
-  //       //
-  //       // })
-  //       return {status: 'success', data: data};
-  //     }
-  //   }
-  // });
-
-  // Api.addCollection(ClimateData);
-
   Api.addCollection(ClimateData, {
     authRequired: false,
     excludedEndpoints: ['deleteAll', 'delete'],
@@ -33,6 +17,7 @@ if (Meteor.isServer) {
           var data = ClimateData.insert({
             temp: this.bodyParams.temp,
             humidity: this.bodyParams.humidity,
+            monitor: this.bodyParams.monitor,
             createdAt: new Date(),
             username: this.user.username,
           });
