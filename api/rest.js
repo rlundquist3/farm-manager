@@ -6,6 +6,20 @@ if (Meteor.isServer) {
     prettyJson: true
   });
 
+  // Api.addRoute('climate_data/:id', {authRequired: true}, {
+  //   post: {
+  //     action: function() {
+  //       var data = ClimateData.insert(this.bodyParams);
+  //       if (data)
+  //         return {status: 'success', data: data};
+  //       return {
+  //         statusCode: 400,
+  //         body: {status: 'fail', message: 'boogers'}
+  //       };
+  //     }
+  //   }
+  // });
+
   Api.addCollection(ClimateData);
 
   Api.addCollection(Meteor.users, {
@@ -23,7 +37,7 @@ if (Meteor.isServer) {
     }
   });
 
-  // Api.addRoute('xxx/:id', {authRequired: false}, {
+  // Api.addRoute('climate_data/:id', {authRequired: false}, {
   //   get: function () {
   //     return ClimateData.findOne(this.urlParams.id);
   //   },

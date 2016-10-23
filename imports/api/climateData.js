@@ -7,3 +7,19 @@ if (Meteor.isServer) {
     return ClimateData.find();
   });
 }
+
+// Meteor.methods({
+//   'climateData.insert'(temp, humidity) {
+//
+//     if(! this.userId) {
+//       throw new Meteor.Error('not-authorized');
+//     }
+//
+//     ClimateData.insert({
+//       temp: temp,
+//       humidity: humidity,
+//       createdAt: new Date(),
+//       username: Meteor.users.findOne(this.userId).username,
+//     });
+//   }
+// });
