@@ -3,7 +3,8 @@ import { ClimateData } from '../imports/api/climateData.js';
 if (Meteor.isServer) {
   var Api = new Restivus({
     useDefaultAuth: true,
-    prettyJson: true
+    prettyJson: true,
+
   });
 
   // Api.addRoute('climate_data/:id', {authRequired: false}, {
@@ -27,15 +28,15 @@ if (Meteor.isServer) {
     excludedEndpoints: ['deleteAll', 'delete'],
     endpoints: {
       post: {
+        authRequired: true,
         action: function () {
-          console.log ("Temp: " + this.bodyParams.temp + " Humidity: " + this.bodyParams.humidity);
           var data = ClimateData.insert({
             temp: this.bodyParams.temp,
             humidity: this.bodyParams.humidity,
             createdAt: new Date(),
-            username: this.userId,
+            username: this.user.username,
           });
-          return data;
+          return true;
         }
       }
     }
