@@ -6,21 +6,40 @@ if (Meteor.isServer) {
     prettyJson: true
   });
 
-  // Api.addRoute('climate_data/:id', {authRequired: true}, {
+  // Api.addRoute('climate_data/:id', {authRequired: false}, {
   //   post: {
   //     action: function() {
-  //       var data = ClimateData.insert(this.bodyParams);
-  //       if (data)
-  //         return {status: 'success', data: data};
-  //       return {
-  //         statusCode: 400,
-  //         body: {status: 'fail', message: 'boogers'}
-  //       };
+  //       var data = this.bodyParams;
+  //       console.log(JSON.stringify(data.temp));
+  //       // ClimateData.insert({
+  //       //   temp: this.bodyParams.temp,
+  //       //
+  //       // })
+  //       return {status: 'success', data: data};
   //     }
   //   }
   // });
 
-  Api.addCollection(ClimateData);
+  // Api.addCollection(ClimateData);
+
+  Api.addCollection(ClimateData, {
+    authRequired: false,
+    excludedEndpoints: ['deleteAll', 'delete'],
+    endpoints: {
+      post: {
+        action: function () {
+          console.log ("Temp: " + this.bodyParams.temp + " Humidity: " + this.bodyParams.humidity);
+          var data = ClimateData.insert({
+            temp: this.bodyParams.temp,
+            humidity: this.bodyParams.humidity,
+            createdAt: new Date(),
+            username: this.userId,
+          });
+          return data;
+        }
+      }
+    }
+  });
 
   Api.addCollection(Meteor.users, {
     excludedEndpoints: ['getAll', 'put'],
