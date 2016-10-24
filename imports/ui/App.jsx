@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { ClimateData } from '../api/climateData.js';
 import Climate from './Climate.jsx';
+import Floorplan from './Floorplan.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
 class App extends Component {
@@ -16,10 +17,12 @@ class App extends Component {
     return (
       <div className="container">
         <header>
-          <h1>Climate</h1>
           <AccountsUIWrapper />
         </header>
 
+        <Floorplan />
+
+        <h2>Climate</h2>
         <ul>
           {this.renderClimate()}
         </ul>
