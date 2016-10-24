@@ -20,8 +20,6 @@ class App extends Component {
           <AccountsUIWrapper />
         </header>
 
-        <Floorplan />
-
         <h2>Climate</h2>
         <ul>
           {this.renderClimate()}
