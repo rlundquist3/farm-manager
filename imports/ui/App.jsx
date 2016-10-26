@@ -22,12 +22,9 @@ class App extends Component {
         <header>
           <AccountsUIWrapper />
         </header>
-
-        <ClimateChart />
+        
         <h2>Climate</h2>
-        <ul>
-          {this.renderClimate()}
-        </ul>
+        <ClimateChart />
       </div>
     );
   }
