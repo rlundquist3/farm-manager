@@ -3,6 +3,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { ClimateData } from '../api/climateData.js';
 import Climate from './Climate.jsx';
 import Floorplan from './Floorplan.jsx';
+import ChartExample from './ChartExample.jsx'
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
           <AccountsUIWrapper />
         </header>
 
+        <ChartExample />
         <h2>Climate</h2>
         <ul>
           {this.renderClimate()}

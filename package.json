@@ -6,10 +6,12 @@
   },
   "dependencies": {
     "bcrypt": "^0.8.7",
+    "chart.js": "^1.1.1",
     "meteor-node-stubs": "~0.2.0",
     "paper": "^0.10.2",
     "react": "^15.3.2",
     "react-addons-pure-render-mixin": "^15.3.2",
+    "react-chartjs": "^0.8.0",
     "react-dom": "^15.3.2"
   }
 }
