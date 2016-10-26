@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import {Line} from 'react-chartjs';
+import { Line } from 'react-chartjs';
 
 var data = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],

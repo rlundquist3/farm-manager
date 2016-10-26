@@ -4,7 +4,8 @@ import { ClimateData } from '../api/climateData.js';
 import Climate from './Climate.jsx';
 import Floorplan from './Floorplan.jsx';
 import ChartExample from './ChartExample.jsx';
-import PaperExample from './PaperExample.jsx'
+import PaperExample from './PaperExample.jsx';
+import ClimateChart from './ClimateChart.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
 class App extends Component {
@@ -22,8 +23,7 @@ class App extends Component {
           <AccountsUIWrapper />
         </header>
 
-        <ChartExample />
-        <PaperExample />
+        <ClimateChart />
         <h2>Climate</h2>
         <ul>
           {this.renderClimate()}
