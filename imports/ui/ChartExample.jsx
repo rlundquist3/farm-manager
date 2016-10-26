@@ -22,7 +22,7 @@ export default React.createClass({
     render () {
         return (
             <div>
-                <Line data={data} className='unichart' options={  {responsive:true}}/>
+                <Line data={data} className='unichart' options={{responsive:true}}/>
             </div>
         );
     }
