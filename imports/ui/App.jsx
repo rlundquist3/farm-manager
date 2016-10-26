@@ -6,6 +6,7 @@ import Floorplan from './Floorplan.jsx';
 import ChartExample from './ChartExample.jsx';
 import PaperExample from './PaperExample.jsx';
 import ClimateChart from './ClimateChart.jsx';
+import DataInput from './DataInput.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
 class App extends Component {
@@ -22,7 +23,10 @@ class App extends Component {
         <header>
           <AccountsUIWrapper />
         </header>
-        
+
+        <h2>Data Input</h2>
+        <DataInput />
+
         <h2>Climate</h2>
         <ClimateChart />
       </div>
