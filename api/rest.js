@@ -17,7 +17,7 @@ if (Meteor.isServer) {
           var data = ClimateData.insert({
             temp: this.bodyParams.temp,
             humidity: this.bodyParams.humidity,
-            monitor: this.bodyParams.monitor,
+            area: this.bodyParams.area,
             createdAt: new Date(),
             username: this.user.username,
           });
@@ -41,22 +41,4 @@ if (Meteor.isServer) {
       }
     }
   });
-
-  // Api.addRoute('climate_data/:id', {authRequired: false}, {
-  //   get: function () {
-  //     return ClimateData.findOne(this.urlParams.id);
-  //   },
-  //   delete: {
-  //     roleRequired: ['author', 'admin'],
-  //     action: function () {
-  //       if (ClimateData.remove(this.urlParams.id)) {
-  //         return {status: 'success', data: {message: 'removed'}};
-  //       }
-  //       return {
-  //         statusCode: 404,
-  //         body: {status: 'fail', message: 'not found'}
-  //       };
-  //     }
-  //   }
-  // });
 }

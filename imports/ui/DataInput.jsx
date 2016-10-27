@@ -40,10 +40,10 @@ class DataInput extends Component {
                     <form className='dataInput' onSubmit={this.handleSubmit.bind(this)} >
                       <select ref='areaInput'>
                         <option disabled selected value> -- select an option -- </option>
-                        <option value='breeding'>Breeding Area</option>
+                        <option value='incubation'>Incubation Area</option>
                         <option value='growout1'>Growout Area 1</option>
                         <option value='growout2'>Growout Area 2</option>
-                        <option value='growout3'>Growout Area 3</option>
+                        <option value='breeding'>Breeding Area</option>
                       </select>
                       <input type='number' ref='waterInput' placeholder='water used (gal)'/>
                       <input type='number' ref='energyInput' placeholder='energy used (kWh)'/>
