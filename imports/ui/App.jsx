@@ -19,8 +19,9 @@ class App extends Component {
 
   renderClimateChart(area) {
     var data = ClimateData.find({area: area}, {sort: { createdAt: -1 } }).fetch();
+
     return (
-      <ClimateChart climateData={data} />
+      <ClimateChart climateData={data} title={this.props.areaNames[area]}/>
     );
   }
 
@@ -46,6 +47,7 @@ class App extends Component {
 
 App.propTypes = {
   climateData: PropTypes.array.isRequired,
+  areaNames: PropTypes.object.isRequired,
   currentUser: PropTypes.object,
 };
 
@@ -53,6 +55,12 @@ export default createContainer(() => {
   Meteor.subscribe('climateData');
   return {
     climateData: ClimateData.find({}, {sort: { createdAt: -1 } }).fetch(),
+    areaNames: {
+      incubation: 'Incubation Area',
+      growout1: 'Growout Area 1',
+      growout2: 'Growout Area 2',
+      breeding: 'Breeding Area',
+    },
     currentUser: Meteor.user(),
   };
 }, App);

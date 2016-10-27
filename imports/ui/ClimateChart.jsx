@@ -52,6 +52,10 @@ export default class ClimateChart extends Component {
 
   chartOptions() {
     return {
+      title: {
+        display: true,
+        text: this.props.title,
+      },
       scales: {
         yAxes: [
           {
@@ -88,6 +92,7 @@ export default class ClimateChart extends Component {
 
 ClimateData.propTypes = {
   climateData: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired,
   // size: PropTypes.number.isRequired,
   // createdAt: PropTypes.array.isRequired,
   // temp: PropTypes.array.isRequired,
