@@ -17,6 +17,13 @@ class App extends Component {
     ));
   }
 
+  renderClimateChart(area) {
+    var data = ClimateData.find({area: area}, {sort: { createdAt: -1 } }).fetch();
+    return (
+      <ClimateChart climateData={data} />
+    );
+  }
+
   render() {
     return (
       <div className="container">
@@ -28,7 +35,10 @@ class App extends Component {
         <DataInput />
 
         <h2>Climate</h2>
-        <ClimateChart />
+        {this.renderClimateChart('incubation')}
+        {this.renderClimateChart('growout1')}
+        {this.renderClimateChart('growout2')}
+        {this.renderClimateChart('breeding')}
       </div>
     );
   }

@@ -3,11 +3,30 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Line } from 'react-chartjs';
 import { ClimateData } from '../api/climateData.js';
 
-class ClimateChart extends Component {
+export default class ClimateChart extends Component {
+
+  // getData() {
+  //   var climateData = ClimateData.find({area: this.props.area}, {sort: { createdAt: -1 } }).fetch();
+  //   this.data = {
+  //     size: climateData.length,
+  //     createdAt: climateData.map((climate) => climate.createdAt),
+  //     temp: climateData.map((climate) => climate.temp),
+  //     humidity: climateData.map((climate) => climate.humidity),
+  //   };
+  // }
+
+  formatData() {
+    return {
+      size: this.props.climateData.length,
+      createdAt: this.props.climateData.map((climate) => climate.createdAt),
+      temp: this.props.climateData.map((climate) => climate.temp),
+      humidity: this.props.climateData.map((climate) => climate.humidity),
+    }
+  }
 
   formatClimate() {
     return {
-      labels: Array(this.props.size).fill(''),
+      labels: Array(this.formatData().size).fill(''),
       datasets: [
         {
           label: 'temperature',
@@ -15,7 +34,7 @@ class ClimateChart extends Component {
           borderColor: 'rgba(250,195,168,0.8)',
           pointColor: 'rgba(250,195,168,1)',
           pointStrokeColor: 'rgb(255, 255, 255)',
-          data: this.props.temp,
+          data: this.formatData().temp,
           yAxisID: 'y-axis-0'
         },
         {
@@ -24,7 +43,7 @@ class ClimateChart extends Component {
           borderColor: 'rgba(167, 213, 250, 0.8)',
           pointColor: 'rgba(167, 213, 250, 1)',
           pointStrokeColor: 'rgb(255, 255, 255)',
-          data: this.props.humidity,
+          data: this.formatData().humidity,
           yAxisID: 'y-axis-1'
         },
       ],
@@ -68,19 +87,20 @@ class ClimateChart extends Component {
 }
 
 ClimateData.propTypes = {
-  size: PropTypes.number.isRequired,
-  createdAt: PropTypes.array.isRequired,
-  temp: PropTypes.array.isRequired,
-  humidity: PropTypes.array.isRequired,
+  climateData: PropTypes.array.isRequired,
+  // size: PropTypes.number.isRequired,
+  // createdAt: PropTypes.array.isRequired,
+  // temp: PropTypes.array.isRequired,
+  // humidity: PropTypes.array.isRequired,
 };
 
-export default createContainer(() => {
-  Meteor.subscribe('climateData');
-  var climateData = ClimateData.find({}, {sort: { createdAt: -1 } }).fetch();
-  return {
-    size: climateData.length,
-    createdAt: climateData.map((climate) => climate.createdAt),
-    temp: climateData.map((climate) => climate.temp),
-    humidity: climateData.map((climate) => climate.humidity),
-  };
-}, ClimateChart);
+// export default createContainer(() => {
+//   Meteor.subscribe('climateData');
+//   var climateData = ClimateData.find({area: }, {sort: { createdAt: -1 } }).fetch();
+//   return {
+//     size: climateData.length,
+//     createdAt: climateData.map((climate) => climate.createdAt),
+//     temp: climateData.map((climate) => climate.temp),
+//     humidity: climateData.map((climate) => climate.humidity),
+//   };
+// }, ClimateChart);
