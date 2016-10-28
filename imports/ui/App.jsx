@@ -8,6 +8,7 @@ import ChartExample from './ChartExample.jsx';
 import PaperExample from './PaperExample.jsx';
 import ClimateChart from './ClimateChart.jsx';
 import InsectChart from './InsectChart.jsx';
+import InputChart from './InputChart.jsx';
 import DataInput from './DataInput.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
@@ -23,7 +24,7 @@ class App extends Component {
     var data = ClimateData.find({area: area}, {sort: { createdAt: -1 } }).fetch();
 
     return (
-      <ClimateChart climateData={data} title={this.props.areaNames[area]}/>
+      <ClimateChart climateData={data} title={this.props.areaNames[area] + ' Climate'}/>
     );
   }
 
@@ -31,7 +32,15 @@ class App extends Component {
     var data = AreaData.find({area: area}, {sort: { createdAt: -1 } }).fetch();
 
     return (
-      <InsectChart data={data} title={this.props.areaNames[area]}/>
+      <InsectChart data={data} title={this.props.areaNames[area] + ' Yields'}/>
+    );
+  }
+
+  renderInputChart(area) {
+    var data = AreaData.find({area: area}, {sort: { createdAt: -1 } }).fetch();
+
+    return (
+      <InputChart data={data} title={this.props.areaNames[area] + ' Inputs'}/>
     );
   }
 
@@ -45,14 +54,18 @@ class App extends Component {
         <h2>Data Input</h2>
         <DataInput />
 
-        {this.renderClimateChart('incubation')}
         {this.renderInsectChart('incubation')}
-        {this.renderClimateChart('growout1')}
+        {this.renderClimateChart('incubation')}
+        {this.renderInputChart('incubation')}
         {this.renderInsectChart('growout1')}
-        {this.renderClimateChart('growout2')}
+        {this.renderClimateChart('growout1')}
+        {this.renderInputChart('growout1')}
         {this.renderInsectChart('growout2')}
-        {this.renderClimateChart('breeding')}
+        {this.renderClimateChart('growout2')}
+        {this.renderInputChart('growout2')}
         {this.renderInsectChart('breeding')}
+        {this.renderClimateChart('breeding')}
+        {this.renderInputChart('breeding')}
       </div>
     );
   }
@@ -67,7 +80,7 @@ App.propTypes = {
 export default createContainer(() => {
   Meteor.subscribe('climateData');
   Meteor.subscribe('areaData');
-  
+
   return {
     climateData: ClimateData.find({}, {sort: { createdAt: -1 } }).fetch(),
     areaNames: {

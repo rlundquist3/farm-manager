@@ -12,6 +12,7 @@ class DataInput extends Component {
       area: ReactDOM.findDOMNode(this.refs.areaInput).value,
       water: ReactDOM.findDOMNode(this.refs.waterInput).value.trim(),
       energy: ReactDOM.findDOMNode(this.refs.energyInput).value.trim(),
+      feed: ReactDOM.findDOMNode(this.refs.feedInput).value.trim(),
       insects: ReactDOM.findDOMNode(this.refs.insectInput).value.trim(),
       harvested: ReactDOM.findDOMNode(this.refs.harvestedInput).value.trim(),
       moveOn: ReactDOM.findDOMNode(this.refs.moveOnInput).value.trim(),
@@ -22,9 +23,10 @@ class DataInput extends Component {
 
     Meteor.call('areaData.insert', data);
 
-    ReactDOM.findDOMNode(this.refs.areaInput).value = '';
+    // ReactDOM.findDOMNode(this.refs.areaInput).value = '';
     ReactDOM.findDOMNode(this.refs.waterInput).value = '';
     ReactDOM.findDOMNode(this.refs.energyInput).value = '';
+    ReactDOM.findDOMNode(this.refs.feedInput).value = '';
     ReactDOM.findDOMNode(this.refs.insectInput).value = '';
     ReactDOM.findDOMNode(this.refs.harvestedInput).value = '';
     ReactDOM.findDOMNode(this.refs.moveOnInput).value = '';
@@ -47,12 +49,13 @@ class DataInput extends Component {
                       </select>
                       <input type='number' ref='waterInput' placeholder='water used (gal)'/>
                       <input type='number' ref='energyInput' placeholder='energy used (kWh)'/>
+                      <input type='number' ref='feedInput' placeholder='feed used (lbs)'/>
                       <input type='number' ref='insectInput' placeholder='insects (lbs)'/>
-                      <input type='number' ref='harvestedInput' placeholder='insects harvested (lbs)'/>
-                      <input type='number' ref='moveOnInput' placeholder='insects progressing (lbs)'/>
                       <input type='number' ref='frassInput' placeholder='frass (lbs)'/>
                       <input type='number' ref='eggsInput' placeholder='eggs (lbs)'/>
                       <input type='number' ref='deadInput' placeholder='dead insects (lbs)'/>
+                      <input type='number' ref='harvestedInput' placeholder='insects harvested (lbs)'/>
+                      <input type='number' ref='moveOnInput' placeholder='insects progressing (lbs)'/>
                       <input type='submit'></input>
                     </form> : ''
         }

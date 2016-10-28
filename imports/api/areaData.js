@@ -22,6 +22,7 @@ Meteor.methods({
       area: data.area,
       water: data.water,
       energy: data.energy,
+      feed: data.feed,
       insects: data.insects,
       harvested: data.harvested,
       moveOn: data.moveOn,
@@ -41,6 +42,7 @@ Meteor.methods({
     var newData = areaData.data;
     newData.water += data.water;
     newData.energy += data.energy;
+    newData.feed += data.feed;
     newData.insects += data.insects;
     newData.harvested += data.harvested;
     newData.moveOn += data.moveOn;
