@@ -1,11 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { ClimateData } from '../api/climateData.js';
+import { AreaData } from '../api/areaData.js';
 import Climate from './Climate.jsx';
 import Floorplan from './Floorplan.jsx';
 import ChartExample from './ChartExample.jsx';
 import PaperExample from './PaperExample.jsx';
 import ClimateChart from './ClimateChart.jsx';
+import InsectChart from './InsectChart.jsx';
 import DataInput from './DataInput.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
@@ -25,6 +27,14 @@ class App extends Component {
     );
   }
 
+  renderInsectChart(area) {
+    var data = AreaData.find({area: area}, {sort: { createdAt: -1 } }).fetch();
+
+    return (
+      <InsectChart data={data} title={this.props.areaNames[area]}/>
+    );
+  }
+
   render() {
     return (
       <div className="container">
@@ -35,11 +45,14 @@ class App extends Component {
         <h2>Data Input</h2>
         <DataInput />
 
-        <h2>Climate</h2>
         {this.renderClimateChart('incubation')}
+        {this.renderInsectChart('incubation')}
         {this.renderClimateChart('growout1')}
+        {this.renderInsectChart('growout1')}
         {this.renderClimateChart('growout2')}
+        {this.renderInsectChart('growout2')}
         {this.renderClimateChart('breeding')}
+        {this.renderInsectChart('breeding')}
       </div>
     );
   }
@@ -53,6 +66,8 @@ App.propTypes = {
 
 export default createContainer(() => {
   Meteor.subscribe('climateData');
+  Meteor.subscribe('areaData');
+  
   return {
     climateData: ClimateData.find({}, {sort: { createdAt: -1 } }).fetch(),
     areaNames: {

@@ -5,22 +5,12 @@ import { ClimateData } from '../api/climateData.js';
 
 export default class ClimateChart extends Component {
 
-  // getData() {
-  //   var climateData = ClimateData.find({area: this.props.area}, {sort: { createdAt: -1 } }).fetch();
-  //   this.data = {
-  //     size: climateData.length,
-  //     createdAt: climateData.map((climate) => climate.createdAt),
-  //     temp: climateData.map((climate) => climate.temp),
-  //     humidity: climateData.map((climate) => climate.humidity),
-  //   };
-  // }
-
   formatData() {
     return {
       size: this.props.climateData.length,
       createdAt: this.props.climateData.map((climate) => climate.createdAt),
       temp: this.props.climateData.map((climate) => climate.temp),
-      humidity: this.props.climateData.map((climate) => climate.humidity),
+      humidity: this.props.climateData.map((climate) => climate.humidity*100),
     }
   }
 
@@ -30,9 +20,9 @@ export default class ClimateChart extends Component {
       datasets: [
         {
           label: 'temperature',
-          backgroundColor: 'rgba(250,195,168,0.5)',
-          borderColor: 'rgba(250,195,168,0.8)',
-          pointColor: 'rgba(250,195,168,1)',
+          backgroundColor: 'rgba(250, 195, 168, 0.5)',
+          borderColor: 'rgba(250, 195, 168, 0.8)',
+          pointColor: 'rgba(250, 195, 168, 1)',
           pointStrokeColor: 'rgb(255, 255, 255)',
           data: this.formatData().temp,
           yAxisID: 'y-axis-0'
@@ -56,24 +46,33 @@ export default class ClimateChart extends Component {
         display: true,
         text: this.props.title,
       },
+      responsive: true,
       scales: {
         yAxes: [
           {
             id: 'y-axis-0',
             position: "left",
+            scaleLabel: {
+              display: true,
+              labelString: 'temperature (F)',
+            },
             ticks: {
-              min: 50,
+              min: 60,
               max: 100,
-              stepSize: 10
+              stepSize: 5
             }
           },
           {
             id: 'y-axis-1',
             position: "right",
+            scaleLabel: {
+              display: true,
+              labelString: 'humidity (%)',
+            },
             ticks: {
-              min: 0.3,
-              max: 0.8,
-              stepSize: 0.1
+              min: 20,
+              max: 100,
+              stepSize: 10
             }
           }
         ]
@@ -83,29 +82,12 @@ export default class ClimateChart extends Component {
 
   render() {
     return (
-      <div className='chart'>
-        <Line data={this.formatClimate()} className='unichart' options={this.chartOptions()}/>
-      </div>
+      <Line data={this.formatClimate()} className='unichart' options={this.chartOptions()} />
     );
   }
 }
 
-ClimateData.propTypes = {
+ClimateChart.propTypes = {
   climateData: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
-  // size: PropTypes.number.isRequired,
-  // createdAt: PropTypes.array.isRequired,
-  // temp: PropTypes.array.isRequired,
-  // humidity: PropTypes.array.isRequired,
 };
-
-// export default createContainer(() => {
-//   Meteor.subscribe('climateData');
-//   var climateData = ClimateData.find({area: }, {sort: { createdAt: -1 } }).fetch();
-//   return {
-//     size: climateData.length,
-//     createdAt: climateData.map((climate) => climate.createdAt),
-//     temp: climateData.map((climate) => climate.temp),
-//     humidity: climateData.map((climate) => climate.humidity),
-//   };
-// }, ClimateChart);

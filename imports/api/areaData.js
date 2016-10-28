@@ -5,8 +5,8 @@ import { check } from 'meteor/check';
 export const AreaData = new Mongo.Collection('area_data');
 
 if (Meteor.isServer) {
-  Meteor.publish('area_data', function areaDataPublication() {
-    return AreaData.find({});
+  Meteor.publish('areaData', function areaDataPublication() {
+    return AreaData.find();
   });
 }
 
@@ -19,7 +19,15 @@ Meteor.methods({
     }
 
     AreaData.insert({
-      data: data,
+      area: data.area,
+      water: data.water,
+      energy: data.energy,
+      insects: data.insects,
+      harvested: data.harvested,
+      moveOn: data.moveOn,
+      frass: data.frass,
+      eggs: data.eggs,
+      dead: data.dead,
       createdAt: new Date(),
       owner: this.userId,
       username: Meteor.users.findOne(this.userId).username,
