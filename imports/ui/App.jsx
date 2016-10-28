@@ -44,6 +44,22 @@ class App extends Component {
     );
   }
 
+  renderCharts() {
+    return (
+      <div>
+        {Object.keys(this.props.areaNames).map((area) => {
+          return (
+            <div>
+              {this.renderInsectChart(area)}
+              {this.renderClimateChart(area)}
+              {this.renderInputChart(area)}
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="container">
@@ -54,18 +70,10 @@ class App extends Component {
         <h2>Data Input</h2>
         <DataInput />
 
-        {this.renderInsectChart('incubation')}
-        {this.renderClimateChart('incubation')}
-        {this.renderInputChart('incubation')}
-        {this.renderInsectChart('growout1')}
-        {this.renderClimateChart('growout1')}
-        {this.renderInputChart('growout1')}
-        {this.renderInsectChart('growout2')}
-        {this.renderClimateChart('growout2')}
-        {this.renderInputChart('growout2')}
-        {this.renderInsectChart('breeding')}
-        {this.renderClimateChart('breeding')}
-        {this.renderInputChart('breeding')}
+        <div>
+          {this.renderCharts()}
+        </div>
+
       </div>
     );
   }
