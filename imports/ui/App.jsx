@@ -3,9 +3,9 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { ClimateData } from '../api/climateData.js';
 import { AreaData } from '../api/areaData.js';
 import Climate from './Climate.jsx';
-import Floorplan from './Floorplan.jsx';
 import ChartExample from './ChartExample.jsx';
 import PaperExample from './PaperExample.jsx';
+import Floorplan from './Floorplan.jsx';
 import ClimateChart from './ClimateChart.jsx';
 import InsectChart from './InsectChart.jsx';
 import InputChart from './InputChart.jsx';
@@ -67,6 +67,7 @@ class App extends Component {
           <AccountsUIWrapper />
         </header>
 
+        <Floorplan />
         <h2>Data Input</h2>
         <DataInput />
 
