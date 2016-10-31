@@ -18,37 +18,78 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
 
-    AreaData.insert({
+    var date = new Date();
+    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    var tomorrow = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    tomorrow.setDate(tomorrow.getDate()+1);
+
+    const oldData = AreaData.findOne({
+      createdAt: {
+        $gte: today,
+        $lt: tomorrow
+      },
       area: data.area,
-      water: data.water,
-      energy: data.energy,
-      feed: data.feed,
-      insects: data.insects,
-      harvested: data.harvested,
-      moveOn: data.moveOn,
-      frass: data.frass,
-      eggs: data.eggs,
-      dead: data.dead,
-      createdAt: new Date(),
-      owner: this.userId,
-      username: Meteor.users.findOne(this.userId).username,
     });
+
+    if (oldData) {
+      var newData = {
+        water: Number(oldData.water) + Number(data.water),
+        energy: Number(oldData.energy) + Number(data.energy),
+        feed: Number(oldData.feed) + Number(data.feed),
+        insects: Number(oldData.insects) + Number(data.insects),
+        eggs: Number(oldData.eggs) + Number(data.eggs),
+        harvested: Number(oldData.harvested) + Number(data.harvested),
+        moveOn: Number(oldData.moveOn) + Number(data.moveOn),
+        frass: Number(oldData.frass) + Number(data.frass),
+        dead: Number(oldData.dead) + Number(data.dead),
+    }
+
+      AreaData.update(oldData._id, {
+        $set: {
+          water: newData.water,
+          energy: newData.energy,
+          feed: newData.feed,
+          insects: newData.insects,
+          eggs: newData.eggs,
+          harvested: newData.harvested,
+          moveOn: newData.moveOn,
+          frass: newData.frass,
+          dead: newData.dead,
+        }
+      });
+    } else {
+      AreaData.insert({
+        area: data.area,
+        water: Number(data.water),
+        energy: Number(data.energy),
+        feed: Number(data.feed),
+        insects: Number(data.insects),
+        harvested: Number(data.harvested),
+        moveOn: Number(data.moveOn),
+        frass: Number(data.frass),
+        eggs: Number(data.eggs),
+        dead: Number(data.dead),
+        createdAt: new Date(),
+        owner: this.userId,
+        username: Meteor.users.findOne(this.userId).username,
+      });
+    }
   },
-  'areaData.update'(id, data) {
-    check(id, String);
-
-    const areaData = AreaData.findOne(id);
-
-    var newData = areaData.data;
-    newData.water += data.water;
-    newData.energy += data.energy;
-    newData.feed += data.feed;
-    newData.insects += data.insects;
-    newData.harvested += data.harvested;
-    newData.moveOn += data.moveOn;
-    newData.frass += data.frass;
-    newData.dead += data.dead;
-
-    AreaData.update(id, { $set: { data: newData } });
-  }
+  // 'areaData.update'(id, data) {
+  //   check(id, String);
+  //
+  //   const areaData = AreaData.findOne(id);
+  //
+  //   var newData = areaData.data;
+  //   newData.water += data.water;
+  //   newData.energy += data.energy;
+  //   newData.feed += data.feed;
+  //   newData.insects += data.insects;
+  //   newData.harvested += data.harvested;
+  //   newData.moveOn += data.moveOn;
+  //   newData.frass += data.frass;
+  //   newData.dead += data.dead;
+  //
+  //   AreaData.update(id, { $set: { data: newData } });
+  // }
 });

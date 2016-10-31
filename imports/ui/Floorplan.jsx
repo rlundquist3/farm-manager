@@ -92,7 +92,11 @@ export default class Floorplan extends Component {
                 fillColor: 'black',
                 fontSize: '5',
               })),
-            }
+            };
+
+            // rooms.incubation.onClick = function(event) {
+            //   this.fillColor = 'red';
+            // }
           }
         };
 

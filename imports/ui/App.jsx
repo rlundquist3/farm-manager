@@ -68,6 +68,7 @@ class App extends Component {
         </header>
 
         <Floorplan />
+        
         <h2>Data Input</h2>
         <DataInput />
 
