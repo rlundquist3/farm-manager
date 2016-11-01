@@ -7,7 +7,7 @@ export default class Floorplan extends Component {
         var floorplanCanvas = document.getElementById('floorplanCanvas');
         paper.setup(floorplanCanvas);
 
-        const BUILDING_SCALING_FACTOR = 50;
+        const BUILDING_SCALING_FACTOR = 100;
 
         var width = paper.view.size.width;
         var height = paper.view.size.height;
@@ -103,10 +103,34 @@ export default class Floorplan extends Component {
         floorplan.drawOutline();
         floorplan.drawRooms();
 
-        floorplan.drawing.position = paper.view.center;
+        // floorplan.drawing.position = paper.view.center;
+
+        var tool = new paper.Tool();
+        // var path;
+        //
+    		// // Define a mousedown and mousedrag handler
+        // // Draws pretty lines (test mouse tracking)
+    		// tool.onMouseDown = function(event) {
+    		// 	path = new paper.Path();
+    		// 	path.strokeColor = 'black';
+    		// 	path.add(event.point);
+    		// }
+        //
+    		// tool.onMouseDrag = function(event) {
+    		// 	path.add(event.point);
+    		// }
+
+        tool.onMouseUp = function(event) {
+          console.log(event.point);
+          floorplan.drawing.rotate(3);
+
+          if(event.point.isInside(floorplan.drawing.bounds)) {
+            console.log('fuckballs');
+          }
+        }
     }
 
     render() {
-        return <canvas id="floorplanCanvas" data-paper-resize></canvas>;
+        return <canvas id="floorplanCanvas" width="500" height="500"></canvas>;
     }
 }
