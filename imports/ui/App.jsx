@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { ClimateData } from '../api/climateData.js';
-import { AreaData } from '../api/areaData.js';
+import { AreaData, AggregateData } from '../api/areaData.js';
 import Climate from './Climate.jsx';
 import ChartExample from './ChartExample.jsx';
 import PaperExample from './PaperExample.jsx';
@@ -44,9 +44,27 @@ class App extends Component {
     );
   }
 
+  renderInsectAggregateChart() {
+    var data = AggregateData.find({}, {sort: { createdAt: -1 } }).fetch();
+
+    return (
+      <InsectChart data={data} title={'Total Yields'}/>
+    );
+  }
+
+  renderInputAggregateChart() {
+    var data = AggregateData.find({}, {sort: { createdAt: -1 } }).fetch();
+
+    return (
+      <InputChart data={data} title={'Total Inputs'}/>
+    );
+  }
+
   renderCharts() {
     return (
       <div>
+        {this.renderInsectAggregateChart()}
+        {this.renderInputAggregateChart()}
         {Object.keys(this.props.areaNames).map((area) => {
           return (
             <div>
@@ -68,7 +86,7 @@ class App extends Component {
         </header>
 
         <Floorplan />
-        
+
         <h2>Data Input</h2>
         <DataInput />
 
@@ -90,6 +108,7 @@ App.propTypes = {
 export default createContainer(() => {
   Meteor.subscribe('climateData');
   Meteor.subscribe('areaData');
+  Meteor.subscribe('aggregateData');
 
   return {
     climateData: ClimateData.find({}, {sort: { createdAt: -1 } }).fetch(),
