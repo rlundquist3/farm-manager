@@ -11,6 +11,7 @@
     "paper": "^0.10.2",
     "react": "^15.3.2",
     "react-addons-pure-render-mixin": "^15.3.2",
+    "react-bootstrap": "^0.30.6",
     "react-chartjs": "github:jhudson8/react-chartjs#chartjs-v2",
     "react-dom": "^15.3.2"
   }

@@ -11,6 +11,7 @@ import InsectChart from './InsectChart.jsx';
 import InputChart from './InputChart.jsx';
 import DataInput from './DataInput.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+import { Grid, Row, Col, Button } from 'react-bootstrap';
 
 class App extends Component {
 
@@ -63,14 +64,22 @@ class App extends Component {
   renderCharts() {
     return (
       <div>
-        {this.renderInsectAggregateChart()}
-        {this.renderInputAggregateChart()}
+        <Row className='show-grid'>
+          <Col md={6}>
+            {this.renderInsectAggregateChart()}
+          </Col>
+          <Col md={6}>
+            {this.renderInputAggregateChart()}
+          </Col>
+        </Row>
         {Object.keys(this.props.areaNames).map((area) => {
           return (
             <div>
-              {this.renderInsectChart(area)}
-              {this.renderClimateChart(area)}
-              {this.renderInputChart(area)}
+              <Row className='show-grid'>
+                <Col md={4}>{this.renderInsectChart(area)}</Col>
+                <Col md={4}>{this.renderClimateChart(area)}</Col>
+                <Col md={4}>{this.renderInputChart(area)}</Col>
+              </Row>
             </div>
           );
         })}
@@ -85,14 +94,24 @@ class App extends Component {
           <AccountsUIWrapper />
         </header>
 
-        <Floorplan />
+        <Grid>
+          <Row className='show-grid'>
+            <Col md={6} mdPush={3}>
+              <Floorplan />
+            </Col>
+          </Row>
 
-        <h2>Data Input</h2>
-        <DataInput />
+          <Row className='show-grid'>
+            <Col md={6} mdPush={3}>
+              <h2>Data Input</h2>
+              <DataInput />
+            </Col>
+          </Row>
 
-        <div>
-          {this.renderCharts()}
-        </div>
+          <div>
+            {this.renderCharts()}
+          </div>
+        </Grid>
 
       </div>
     );

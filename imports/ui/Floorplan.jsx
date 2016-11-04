@@ -5,12 +5,11 @@ export default class Floorplan extends Component {
 
     componentDidMount() {
         var floorplanCanvas = document.getElementById('floorplanCanvas');
+        floorplanCanvas.width = document.getElementById('canvasDiv').clientWidth;
+        floorplanCanvas.height = document.getElementById('canvasDiv').clientHeight;
         paper.setup(floorplanCanvas);
 
         const BUILDING_SCALING_FACTOR = 100;
-
-        var width = paper.view.size.width;
-        var height = paper.view.size.height;
 
         paper.view.draw();
 
@@ -131,6 +130,10 @@ export default class Floorplan extends Component {
     }
 
     render() {
-        return <canvas id="floorplanCanvas" width="500" height="500"></canvas>;
+        return (
+          <div id='canvasDiv'>
+            <canvas id='floorplanCanvas' height='300'></canvas>
+          </div>
+        );
     }
 }
