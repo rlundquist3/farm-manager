@@ -28,7 +28,6 @@ class App extends Component {
 
           <Row className='show-grid'>
             <Col md={6} mdPush={3}>
-              <h2>Data Input</h2>
               <DataInput />
             </Col>
           </Row>

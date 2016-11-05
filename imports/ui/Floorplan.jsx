@@ -1,15 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { render, setState } from 'react-dom';
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Modal, Form, FormGroup, FieldGroup, ControlLabel, FormControl, Col } from 'react-bootstrap';
 
 export default class Floorplan extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { showModal: false };
-
-    this.showModal = this.showModal.bind(this);
-    this.hideModal = this.hideModal.bind(this);
-  }
 
   componentDidMount() {
 
@@ -143,50 +136,10 @@ export default class Floorplan extends Component {
     }
   }
 
-  showModal() {
-    this.setState({ showModal: true });
-  }
-
-  hideModal() {
-    this.setState({ showModal: false });
-  }
-
   render() {
     return (
       <div id='canvasDiv'>
         <canvas id='floorplanCanvas' height='300'></canvas>
-
-        <Button
-          bsStyle="primary"
-          bsSize="large"
-          onClick={this.showModal}
-        >
-          Launch demo modal
-        </Button>
-
-        <Modal show={this.state.showModal} onHide={this.hideModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <h4>Text in a modal</h4>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-
-            <h4>Overflowing text to show scroll behavior</h4>
-            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.hideModal}>Close</Button>
-          </Modal.Footer>
-        </Modal>
       </div>
     );
   }
