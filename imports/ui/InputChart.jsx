@@ -53,7 +53,7 @@ export default class InputChart extends Component {
   chartOptions() {
     return {
       title: {
-        display: true,
+        display: false,
         text: this.props.title,
       },
       responsive: true,

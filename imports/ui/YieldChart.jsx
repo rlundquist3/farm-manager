@@ -3,7 +3,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Line } from 'react-chartjs';
 import { AreaData } from '../api/areaData.js';
 
-export default class InsectChart extends Component {
+export default class YieldChart extends Component {
 
   formatData() {
     return {
@@ -63,7 +63,7 @@ export default class InsectChart extends Component {
   chartOptions() {
     return {
       title: {
-        display: true,
+        display: false,
         text: this.props.title,
       },
       responsive: true,
@@ -94,7 +94,7 @@ export default class InsectChart extends Component {
   }
 }
 
-InsectChart.propTypes = {
+YieldChart.propTypes = {
   data: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
 };
