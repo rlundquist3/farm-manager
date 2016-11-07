@@ -82,7 +82,7 @@ class DataInput extends Component {
                       <FormControl ref='areaInput' componentClass='select' placeholder='area'>
                         <option value='incubation'>Incubation Area</option>
                         <option value='growout1'>Growout Area 1</option>
-                        <option value='growout2'>Growout Area 1</option>
+                        <option value='growout2'>Growout Area 2</option>
                         <option value='breeding'>Breeding Area</option>
                       </FormControl>
                     </Col>
