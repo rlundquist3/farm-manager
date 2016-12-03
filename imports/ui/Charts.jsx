@@ -12,39 +12,39 @@ class Charts extends Component {
     var data = ClimateData.find({area: area}, {sort: { createdAt: -1 } }).fetch();
 
     return (
-      <ClimateChart climateData={data} title={this.props.areaNames[area] + ' Climate'}/>
+      <ClimateChart climateData={data} title={this.props.areaNames[area] + ' Climate'} />
     );
   }
 
   renderYieldChart(area) {
-    var data = AreaData.find({area: area}, {sort: { createdAt: -1 } }).fetch();
+    var data = AreaData.find({area: area}, {sort: { createdAt: -1 }, limit: this.props.timeShown }).fetch();
 
     return (
-      <YieldChart data={data} title={this.props.areaNames[area] + ' Yields'}/>
+      <YieldChart data={data} title={this.props.areaNames[area] + ' Yields'} />
     );
   }
 
   renderInputChart(area) {
-    var data = AreaData.find({area: area}, {sort: { createdAt: -1 } }).fetch();
+    var data = AreaData.find({area: area}, {sort: { createdAt: -1 }, limit: this.props.timeShown }).fetch();
 
     return (
-      <InputChart data={data} title={this.props.areaNames[area] + ' Inputs'}/>
+      <InputChart data={data} title={this.props.areaNames[area] + ' Inputs'} />
     );
   }
 
   renderInsectAggregateChart() {
-    var data = AggregateData.find({}, {sort: { createdAt: -1 } }).fetch();
+    var data = AggregateData.find({}, {sort: { createdAt: -1 }, limit: this.props.timeShown }).fetch();
 
     return (
-      <YieldChart data={data} title={'Total Yields'}/>
+      <YieldChart data={data} title={'Total Yields'} />
     );
   }
 
   renderInputAggregateChart() {
-    var data = AggregateData.find({}, {sort: { createdAt: -1 } }).fetch();
+    var data = AggregateData.find({}, {sort: { createdAt: -1 }, limit: this.props.timeShown }).fetch();
 
     return (
-      <InputChart data={data} title={'Total Inputs'}/>
+      <InputChart data={data} title={'Total Inputs'} />
     );
   }
 
@@ -86,6 +86,7 @@ class Charts extends Component {
 Charts.propTypes = {
   climateData: PropTypes.array.isRequired,
   areaNames: PropTypes.object.isRequired,
+  timeShown: PropTypes.number,
   currentUser: PropTypes.object,
 };
 
@@ -102,6 +103,7 @@ export default createContainer(() => {
       growout2: 'Growout Area 2',
       breeding: 'Breeding Area',
     },
+    timeShown: 7,
     currentUser: Meteor.user(),
   };
 }, Charts);

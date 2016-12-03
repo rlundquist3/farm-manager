@@ -68,6 +68,7 @@ class DataInput extends Component {
               Data Input
             </Button>
 
+
             <Modal show={this.state.showModal} onHide={this.hideModal}>
               <Modal.Header closeButton>
                 <Modal.Title>Data Input</Modal.Title>
