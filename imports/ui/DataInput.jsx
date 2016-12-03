@@ -62,7 +62,7 @@ class DataInput extends Component {
           <div>
             <Button
               bsStyle="primary"
-              bsSize="large"
+              bsSize="small"
               onClick={this.showModal}
             >
               Data Input
@@ -80,7 +80,7 @@ class DataInput extends Component {
                       Area
                     </Col>
                     <Col sm={10}>
-                      <FormControl ref='areaInput' componentClass='select' placeholder='area'>
+                      <FormControl ref='areaInput' componentClass='select' placeholder='area' value={this.props.area}>
                         <option value='incubation'>Incubation Area</option>
                         <option value='growout1'>Growout Area 1</option>
                         <option value='growout2'>Growout Area 2</option>
@@ -173,6 +173,7 @@ class DataInput extends Component {
 }
 
 DataInput.propTypes = {
+  area: PropTypes.string,
   currentUser: PropTypes.object,
 }
 

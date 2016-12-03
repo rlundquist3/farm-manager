@@ -256,8 +256,6 @@ export default class Floorplan extends Component {
     return (
       <div id='canvasDiv'>
         <canvas id='floorplanCanvas' height='300' hidden></canvas>
-
-        <DataInput />
       </div>
     );
   }

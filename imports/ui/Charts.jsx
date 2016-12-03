@@ -5,6 +5,7 @@ import { AreaData, AggregateData } from '../api/areaData.js';
 import ClimateChart from './ClimateChart.jsx';
 import YieldChart from './YieldChart.jsx';
 import InputChart from './InputChart.jsx';
+import DataInput from './DataInput.jsx';
 import { Grid, Row, Col, Button, Carousel, Tabs, Tab } from 'react-bootstrap';
 
 class Charts extends Component {
@@ -68,7 +69,16 @@ class Charts extends Component {
           {Object.keys(this.props.areaNames).map((area) => {
             return (
               <Col md={5} mdPush={1}>
-                <h3>{this.props.areaNames[area]}</h3>
+                <Row>
+                  <Col md={5}>
+                    <h3>{this.props.areaNames[area]}</h3>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={3} mdPush={9}>
+                    <DataInput pullRight='true' area={area} />
+                  </Col>
+                </Row>
                 <Tabs>
                   <Tab eventKey={area + 'yields'} title='Yields'>{this.renderYieldChart(area)}</Tab>
                   <Tab eventKey={area + 'inputs'} title='Inputs'>{this.renderInputChart(area)}</Tab>
