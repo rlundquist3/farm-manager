@@ -28,3 +28,4 @@ chart:chart
 dispatch:mocha-phantomjs
 xolvio:cleaner
 dburles:factory
+anti:gagarin@=0.4.12

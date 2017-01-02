@@ -1,10 +1,16 @@
-machine:
-  node:
-    version: 0.10.43
 dependencies:
+  cache_directories:
+    - ~/.meteor
   override:
-    - curl https://install.meteor.com | /bin/sh
-    - npm -g install npm@latest
-checkout:
-  post:
-    - git submodule update --init
+    - meteor || curl https://install.meteor.com | /bin/sh
+    - npm install -g gagarin
+
+test:
+  override:
+    - gagarin -v
+
+deployment:
+  production:
+    branch: "master"
+    commands:
+      - printf "<Meteor username>\n<Meteor password>\n" | meteor deploy circlecivelocity.meteor.com
