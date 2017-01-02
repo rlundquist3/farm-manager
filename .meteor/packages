@@ -25,3 +25,6 @@ practicalmeteor:mocha
 nimble:restivus
 marcinn:paperjs
 chart:chart
+dispatch:mocha-phantomjs
+xolvio:cleaner
+dburles:factory

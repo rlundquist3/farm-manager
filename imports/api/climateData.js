@@ -8,6 +8,12 @@ if (Meteor.isServer) {
   });
 }
 
+Factory.define('climateData', ClimateData, {
+  temp: () => faker.random.number(),
+  humidity: () => faker.random.number(),
+  createdAt: () => new Date(),
+});
+
 // Meteor.methods({
 //   'climateData.insert'(temp, humidity) {
 //
