@@ -1,5 +1,6 @@
 describe('My first Gagarin test suite', function () {
   var server = meteor();
+  
   it('should just work', function () {
     return server.execute(function () {
       console.log('I am alive!');
@@ -9,6 +10,7 @@ describe('My first Gagarin test suite', function () {
   var a = 3;
   it('should print stuff', function() {
     return server.execute(function(a) {
+      a.should.equal(3);
       console.log(a)
     }, [ a ]);
   });

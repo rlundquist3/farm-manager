@@ -1,4 +1,10 @@
-import { Mongo } from 'meteor/mongo';
+// import { Mongo } from 'meteor/mongo';
+// import { Factory } from 'meteor/factory';
+// import faker from 'faker';
+
+var Mongo = require('meteor/mongo');
+var Factory = require('meteor/factory');
+var faker = require('faker');
 
 export const ClimateData = new Mongo.Collection('climate_data');
 
