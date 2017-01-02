@@ -6,7 +6,7 @@ describe('My first Gagarin test suite', function () {
     });
   });
 
-  let a = 3;
+  var a = 3;
   it('should print stuff', function() {
     return server.execute(function(a) {
       console.log(a)
