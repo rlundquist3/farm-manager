@@ -1,5 +1,7 @@
 # Insect Farm Manager
 
+[![CircleCI](https://circleci.com/gh/rlundquist3/farm-manager/tree/dev.svg?style=svg)](https://circleci.com/gh/rlundquist3/farm-manager/tree/dev)
+
 This app (name TBD) is intended to help cricket farmers easily keep track of their inputs and yields to give them better insight into their stock and improve their efficiency. The underlying components are of course adaptable, and the app can be updated for use with other insects and even other crops.
 
 ------------------
