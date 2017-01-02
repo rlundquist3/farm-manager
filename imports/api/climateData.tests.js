@@ -7,12 +7,6 @@ import faker from 'faker';
 
 import { ClimateData } from './climateData.js';
 
-// Factory.define('climateData', ClimateData, {
-//   temp: () => faker.random.number(),
-//   humidity: () => faker.random.number(),
-//   createdAt: () => new Date(),
-// });
-
 if (Meteor.isServer) {
   describe('climateData', () => {
     describe('mutators', () => {
@@ -33,7 +27,7 @@ if (Meteor.isServer) {
       });
     });
 
-    describe('climbateData.list', () {
+    describe('climbateData.list', () => {
       it('sends all data (TODO: ADD FOR DIFFERENT TIME SCALES)', () => {
         const collector = new PublicationCollector();
         collector.collect(
