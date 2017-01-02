@@ -5,4 +5,11 @@ describe('My first Gagarin test suite', function () {
       console.log('I am alive!');
     });
   });
+
+  let a = 3;
+  it('should print stuff', function() {
+    return server.execute(function(a) {
+      console.log(a)
+    }, [ a ]);
+  });
 });

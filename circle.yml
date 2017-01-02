@@ -4,6 +4,7 @@ dependencies:
   override:
     - meteor || curl https://install.meteor.com | /bin/sh
     - npm install -g gagarin
+    - npm install
 
 test:
   override:
