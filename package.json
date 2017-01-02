@@ -9,8 +9,8 @@
     "chart.js": "^2.3.0",
     "meteor-node-stubs": "~0.2.0",
     "paper": "^0.10.2",
-    "react": "^15.3.2",
-    "react-addons-pure-render-mixin": "^15.3.2",
+    "react": "^15.4.1",
+    "react-addons-pure-render-mixin": "^15.4.1",
     "react-bootstrap": "^0.30.6",
     "react-chartjs": "github:jhudson8/react-chartjs#chartjs-v2",
     "react-dom": "^15.3.2"
