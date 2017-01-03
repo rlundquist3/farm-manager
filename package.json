@@ -15,6 +15,9 @@
     "react-bootstrap": "^0.30.6",
     "react-chartjs": "github:jhudson8/react-chartjs#chartjs-v2",
     "react-dom": "^15.3.2"
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
+    "babel-preset-env": "^1.1.4",
+    "babel-preset-meteor": "^6.14.0"
   },
   "devDependencies": {
     "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
