@@ -40,13 +40,13 @@ Meteor.methods({
         water: Number(oldData.water) + Number(data.water),
         energy: Number(oldData.energy) + Number(data.energy),
         feed: Number(oldData.feed) + Number(data.feed),
-        insects: Number(oldData.insects) + Number(data.insects),
-        eggs: Number(oldData.eggs) + Number(data.eggs),
+        insects: data.insects ? Number(data.insects) : Number(oldData.insects),
+        eggs: data.eggs ? Number(data.eggs) : Number(oldData.eggs),
         harvested: Number(oldData.harvested) + Number(data.harvested),
-        moveOn: Number(oldData.moveOn) + Number(data.moveOn),
-        frass: Number(oldData.frass) + Number(data.frass),
-        dead: Number(oldData.dead) + Number(data.dead),
-    }
+        moveOn: data.moveOn ? Number(data.moveOn) : Number(oldData.moveOn),
+        frass: data.frass ? Number(data.frass) : Number(oldData.frass),
+        dead: data.dead ? Number(data.dead) : Number(oldData.dead),
+      }
 
       AreaData.update(oldData._id, {
         $set: {

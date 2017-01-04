@@ -59,7 +59,7 @@ class Charts extends Component {
         <Row className='show-grid'>
           <Col md={8} mdPush={2}>
             <h3>Aggregate Data</h3>
-            <Tabs>
+            <Tabs bsStyle='pills' >
               <Tab eventKey='total yields' title='Yields'>{this.renderInsectAggregateChart()}</Tab>
               <Tab eventKey='total inputs' title='Inputs'>{this.renderInputAggregateChart()}</Tab>
             </Tabs>
@@ -79,7 +79,7 @@ class Charts extends Component {
                     <DataInput pullRight='true' area={area} />
                   </Col>
                 </Row>
-                <Tabs>
+                <Tabs bsStyle='pills' >
                   <Tab eventKey={area + 'yields'} title='Yields'>{this.renderYieldChart(area)}</Tab>
                   <Tab eventKey={area + 'inputs'} title='Inputs'>{this.renderInputChart(area)}</Tab>
                   <Tab eventKey={area + 'climate'} title='Climate'>{this.renderClimateChart(area)}</Tab>

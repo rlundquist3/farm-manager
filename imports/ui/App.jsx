@@ -39,12 +39,11 @@ class App extends Component {
           <Row className='show-grid'>
             <Col md={6} mdPush={3}>
               <ButtonToolbar>
-                <Button onClick={this.changeTimeShown(7)} active={this.props.timeShown === 7}>Week</Button>
-                <Button onClick={this.changeTimeShown(14)} active={this.props.timeShown === 14}>2 Weeks</Button>
-                <Button onClick={this.changeTimeShown(30)} active={this.props.timeShown === 30}>Month</Button>
-                <Button onClick={this.changeTimeShown(90)} active={this.props.timeShown === 90}>3 Months</Button>
-                <Button onClick={this.changeTimeShown(180)} active={this.props.timeShown === 180}>6 Months</Button>
-                <Button onClick={this.changeTimeShown(365)} active={this.props.timeShown === 365}>Year</Button>
+                <Button bsSize='small' onClick={this.changeTimeShown(7)} active={this.props.timeShown === 7}>Week</Button>
+                <Button bsSize='small' onClick={this.changeTimeShown(30)} active={this.props.timeShown === 30}>Month</Button>
+                <Button bsSize='small' onClick={this.changeTimeShown(90)} active={this.props.timeShown === 90}>3 Months</Button>
+                <Button bsSize='small' onClick={this.changeTimeShown(180)} active={this.props.timeShown === 180}>6 Months</Button>
+                <Button bsSize='small' onClick={this.changeTimeShown(365)} active={this.props.timeShown === 365}>Year</Button>
               </ButtonToolbar>
             </Col>
           </Row>
