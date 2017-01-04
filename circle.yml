@@ -4,7 +4,7 @@ machine:
 dependencies:
   override:
     - curl https://install.meteor.com | /bin/sh
-    - npm -g install npm@latest
+    - meteor npm install
 test:
   override:
     - meteor test --driver-package dispatch:mocha-phantomjs
